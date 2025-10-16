@@ -1,0 +1,13 @@
+fastapi
+pydantic<3
+uvicorn
+numpy
+scikit-learn
+rank-bm25
+chromadb
+faiss-cpu==1.8.0
+sentence-transformers
+httpx
+python-dotenv
+pyyaml
+playwright
