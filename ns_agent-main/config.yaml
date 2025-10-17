@@ -1,0 +1,15 @@
+pdf_directory: ai_platform/data/raw/netsuite_pdfs
+persist_directory: ai_platform/data/chroma/netsuite
+gemini_model: models/gemini-2.5-flash
+gemini_embedding_model: models/gemini-embedding-001
+chunk_size: 1000
+chunk_overlap: 150
+enable_toc_extraction: true
+retrieval_k: 8
+k_vec: 40
+k_bm: 200
+fusion_weight_vec: 0.6
+fusion_weight_bm25: 0.4
+max_requests_per_minute: 300
+max_requests_per_day: 10000
+embedding_batch_delay: 0.1
