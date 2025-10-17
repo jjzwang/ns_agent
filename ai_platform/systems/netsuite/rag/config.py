@@ -4,8 +4,8 @@ import yaml
 class RAGConfig:
     pdf_directory: str
     persist_directory: str
-    gemini_model: str = "models/gemini-1.5-pro"
-    gemini_embedding_model: str = "models/text-embedding-004"
+    gemini_model: str = "models/gemini-2.5-flash"
+    gemini_embedding_model: str = "models/gemini-embedding-001"
     chunk_size: int = 1000
     chunk_overlap: int = 150
     enable_toc_extraction: bool = True

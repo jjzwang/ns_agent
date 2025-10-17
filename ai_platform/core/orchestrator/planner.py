@@ -4,14 +4,13 @@ from typing import List, Optional
 from pathlib import Path
 from ..schemas import QueryContext, RetrievedPassage, TaskPlan, PlanStep
 
-# LLM client - using OpenAI as example, easily swappable
 try:
     from google import genai
-    client = genai(api_key=os.getenv("OPENAI_API_KEY"))
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
     LLM_AVAILABLE = True
 except ImportError:
     LLM_AVAILABLE = False
-    print("Warning: OpenAI not installed. Install with: pip install openai")
+    print("Warning: genai not installed. Install with: pip install genai")
 
 def load_prompt_template(flow: str) -> str:
     """Load the appropriate prompt template for the flow type."""
@@ -73,9 +72,9 @@ def call_llm_for_plan(goal: str, context: str, prompt_template: str) -> Optional
         Respond with ONLY the JSON, no other text."""
 
     try:
-        # Using gpt-4o-mini for cost efficiency, upgrade to gpt-4o for better quality
-        response = client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+        
+        response = client.models.generate_content(
+            model=os.getenv("GEMINI_MODEL"),
             messages=[
                 {"role": "system", "content": "You are a NetSuite automation planner. Output only valid JSON."},
                 {"role": "user", "content": full_prompt}
